@@ -1,21 +1,26 @@
 variable "cluster_id" {
-  description = "ID кластера"
+  description = "cluster ID"
   type        = string
 }
 
 variable "database_name" {
-  description = "Имя базы данных"
+  description = "Database name"
   type        = string
 }
 
 variable "user_name" {
-  description = "Имя пользователя"
+  description = "User name"
   type        = string
 }
 
 variable "user_roles" {
-  description = "Список ролей для пользователя базы данных"
+  description = "User roles"
   type        = list(string)
+}
+
+variable "user_password" {
+  description = "User password"
+  type        = string
 }
 
 

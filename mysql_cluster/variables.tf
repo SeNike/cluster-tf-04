@@ -37,3 +37,42 @@ variable "default_zone" {
   description = "https://cloud.yandex.ru/docs/overview/concepts/geo-scope"
 }
 
+variable "resource_preset_id" {
+  type        = string
+  description = "resource_preset_id"
+}
+
+variable "environment" {
+  type        = string
+  description = "environment"
+}
+
+variable "host_zone" {
+  type        = string
+  description = "host_zone"
+}
+
+variable "host_zone_dynamic" {
+  type        = string
+  description = "host_zone_dynamic"
+}
+
+variable "assign_public_ip" {
+  type        = bool
+  description = "assign_public_ip"
+}
+
+variable "disk_size" {
+  type        = number
+  description = "disk_size"
+}
+
+variable "disk_type_id" {
+  type        = string
+  description = "disk_type_id"
+}
+
+
+
+
+

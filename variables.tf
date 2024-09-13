@@ -31,9 +31,82 @@ variable "ssh_public_key" {
   default = "~/.ssh/id_rsa.pub"
 }
 
-variable "packages" {
-  type = list(string)
-  default = ["nginx", "vim"]
+variable "env_name" {
+  type    = string
+  default = "development"
+  description = "Environment name"
 }
 
+variable "vpc_subnets" {
+  type = list
+  description =  "VPC subnets"
+} 
 
+variable "cluster_name" {
+  type    = string
+  default = "example"
+  description =  "Cluster name"
+}
+
+variable "ha"  {
+  type    = bool
+  default = true
+  description = "HA cluster enable"
+} 
+
+variable "database_name" {
+  type    = string
+  default = "test"
+  description =  "database_name"
+}
+
+variable "database_user_name" {
+  type    = string
+  default = "app"
+  description =  "database user name"
+}
+
+variable "database_user_roles" {
+  type = list(string)
+  description =  "database_user_roles"
+} 
+
+variable "resource_preset_id" {
+  type        = string
+  description = "resource_preset_id"
+}
+
+variable "user_password" {
+  type        = string
+  description = "user_password"
+}
+
+variable "environment" {
+  type        = string
+  description = "environment"
+}
+
+variable "host_zone" {
+  type        = string
+  description = "host_zone"
+}
+
+variable "host_zone_dynamic" {
+  type        = string
+  description = "host_zone_dynamic"
+}
+
+variable "assign_public_ip" {
+  type        = bool
+  description = "assign_public_ip"
+}
+
+variable "disk_size" {
+  type        = number
+  description = "disk_size"
+}
+
+variable "disk_type_id" {
+  type        = string
+  description = "disk_type_id"
+}

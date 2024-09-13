@@ -1,28 +1,35 @@
 module "vpc_dev" {
 
   source       = "./vpc"
-  env_name     = "production"
-  
-  subnets = [
-    { zone = "ru-central1-a", cidr = "10.0.1.0/24" },
-    { zone = "ru-central1-b", cidr = "10.0.2.0/24" },
-  ]
+  env_name     = var.env_name
+  subnets = var.vpc_subnets
 }
 
 module "mysql_cluster" {
+ 
   token     = var.token
   cloud_id  = var.cloud_id
   folder_id = var.folder_id
-  source    = "./mysql_cluster"
-  name      = "example"
+  source    = "./mysql_cluster" 
+  name      = var.cluster_name
   network_id = module.vpc_dev.network_id
-  ha        = true # Сначала создаем кластер с одним хостом
+  ha        = var.ha 
+  resource_preset_id = var.resource_preset_id
+  environment = var.environment
+  host_zone = var.host_zone
+  host_zone_dynamic = var.host_zone_dynamic
+  assign_public_ip = var.assign_public_ip
+  disk_size = var.disk_size
+  disk_type_id = var.disk_type_id
+  
 }
 
 module "mysql_database" {
   source        = "./mysql_database"
   cluster_id    = module.mysql_cluster.mysql_cluster_id
-  database_name = "test"
-  user_name     = "app"
-  user_roles    = ["ALL"]  # Задаем роли для пользователя
+  database_name = var.database_name
+  user_name     = var.database_user_name
+  user_password = var.user_password
+  user_roles    = var.database_user_roles 
 }
+
